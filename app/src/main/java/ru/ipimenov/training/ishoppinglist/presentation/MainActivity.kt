@@ -2,7 +2,6 @@ package ru.ipimenov.training.ishoppinglist.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -74,7 +73,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupClickListener() {
         shopListAdapter.onShopItemClickListener = {
-            Log.d("MyLog", "ShopItem: Name ${it.name}, Count ${it.count}, Enabled ${it.enabled}")
             val intent = newIntentEditShopItem(this, it.id)
             startActivity(intent)
         }
