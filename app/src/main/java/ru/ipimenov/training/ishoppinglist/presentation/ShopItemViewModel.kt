@@ -1,17 +1,18 @@
 package ru.ipimenov.training.ishoppinglist.presentation
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import ru.ipimenov.training.ishoppinglist.data.ShopListRepositoryImpl
 import ru.ipimenov.training.ishoppinglist.domain.AddShopItemUseCase
 import ru.ipimenov.training.ishoppinglist.domain.EditShopItemUseCase
 import ru.ipimenov.training.ishoppinglist.domain.GetShopItemUseCase
 import ru.ipimenov.training.ishoppinglist.domain.ShopItem
 
-class ShopItemViewModel : ViewModel() {
+class ShopItemViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = ShopListRepositoryImpl
+    private val repository = ShopListRepositoryImpl(application)
 
     private val getShopItemUseCase = GetShopItemUseCase(repository)
     private val addShopItemUseCase = AddShopItemUseCase(repository)

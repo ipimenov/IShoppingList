@@ -1,16 +1,16 @@
 package ru.ipimenov.training.ishoppinglist.presentation
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import ru.ipimenov.training.ishoppinglist.data.ShopListRepositoryImpl
 import ru.ipimenov.training.ishoppinglist.domain.DeleteShopItemUseCase
 import ru.ipimenov.training.ishoppinglist.domain.EditShopItemUseCase
 import ru.ipimenov.training.ishoppinglist.domain.GetShopListUseCase
 import ru.ipimenov.training.ishoppinglist.domain.ShopItem
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository = ShopListRepositoryImpl
+    private val repository = ShopListRepositoryImpl(application)
 
     private val getShopListUseCase = GetShopListUseCase(repository)
     private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
